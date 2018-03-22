@@ -1,6 +1,16 @@
 # Created by Alex Hurtado
+import sqlite3
+import os
+import os.path
 
+if not os.path.isfile("planner.db"):
+    DIRECTORY = os.path.dirname(os.path.realpath("setup.py"))
+    DATABASE = os.path.join(DIRECTORY + '\\')
 
+def get_db():
+    """Opens a database connection if there is none yet for the current
+    application context."""
+    pass
 
 def create_event(date, event):
     """Creates an event inside of a database..."""
