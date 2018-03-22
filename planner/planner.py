@@ -5,7 +5,7 @@ import os.path
 
 if not os.path.isfile("planner.db"):
     DIRECTORY = os.path.dirname(os.path.realpath("setup.py"))
-    DATABASE = os.path.join(DIRECTORY + '\\')
+    DATABASE = os.path.join(DIRECTORY + '\\' + 'planner.db')
 
 def get_db():
     """Opens a database connection if there is none yet for the current
