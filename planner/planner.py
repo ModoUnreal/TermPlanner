@@ -3,14 +3,22 @@ import sqlite3
 import os
 import os.path
 
+
+# Check to see if .db file exists
 if not os.path.isfile("planner.db"):
-    DIRECTORY = os.path.dirname(os.path.realpath("setup.py"))
+    DIRECTORY = os.path.dirname(os.path.realpath("planner.py"))
     DATABASE = os.path.join(DIRECTORY + '\\' + 'planner.db')
 
-def get_db():
-    """Opens a database connection if there is none yet for the current
-    application context."""
-    pass
+
+def connect_db():
+    """Connects to the specific database"""
+    rv = sqlite3.connect(DATABASE)
+    rv.row_factory = sqlite3.Row
+    return rv
+
+
+def close_connection(connection):
+    conn.close()
 
 def create_event(date, event):
     """Creates an event inside of a database..."""
