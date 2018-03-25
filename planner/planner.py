@@ -4,34 +4,45 @@ import os
 import os.path
 
 
-# Check to see if .db file exists
-if not os.path.isfile("planner.db"):
-    DIRECTORY = os.path.dirname(os.path.realpath("planner.py"))
-    DATABASE = os.path.join(DIRECTORY + '\\' + 'planner.db')
+class Planner(object):
+    """Defines a Planner class"""
+    def __init__(self, db="planner.db"):
+        self.db = db
+        self.connected = None
 
+    def open_connection(self, db):
+        """Opens a database connection."""
+        self.conn = sqlite3.connect(db)
+        self.connected = True
+        self.cur = self.conn.cursor()
 
-def connect_db():
-    """Connects to the specific database"""
-    rv = sqlite3.connect(DATABASE)
-    rv.row_factory = sqlite3.Row
-    return rv
+    def close_connection(self):
+        """Closes the connection to the database"""
+        if self.check_connection():
+            self.cur.close()
+            self.conn.close()
+            self.connected = False
 
+    def check_connection(self):
+        """Checks to see if a connection is open"""
+        if self.connected:
+            return True
 
-def close_connection(connection):
-    conn.close()
+        else:
+            return False
 
-def create_event(date, event):
-    """Creates an event inside of a database..."""
-    pass
+    def make_db(self, db):
+        """Makes a database, if it doesn't exist already"""
+        self.open_connection()
+        self.cur.execute('''CREATE TABLE events
+                              (date text, events_name text)''')
+        self.conn.commit()
+        self.close_connection()
 
-def show_events(db):
-    """Takes event from the database and lists them"""
-    pass
-
-def show_current_event(db):
-    """Will show any events occuring today"""
-    pass
-
-def show_specific_day(db, date):
-    """Shows the events listed for a specific date."""
-    pass
+    def create_event(self, date, event):
+        """Creates an event inside of a database"""
+        self.open_connection(self.db)
+        self.event = (event,)
+        self.date = (date,)
+        self.cur.execute('INSERT INTO events (date, events_name) VALUES (?, ?)', (event, date))
+        self.close_connection()
