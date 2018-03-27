@@ -1,7 +1,6 @@
 # Created by Alex Hurtado
+
 import sqlite3
-import os
-import os.path
 
 
 class Planner(object):
@@ -45,4 +44,5 @@ class Planner(object):
         self.event = (event,)
         self.date = (date,)
         self.cur.execute('INSERT INTO events (date, events_name) VALUES (?, ?)', (event, date))
+        self.conn.commit()
         self.close_connection()
