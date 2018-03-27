@@ -54,3 +54,9 @@ class Planner(object):
         print("Here are the events that you have set: ")
         for i in self.info:
             print(i)
+
+    def checkout(self, event):
+        """User controlled option to remove event from database."""
+        pass
+#        self.cur.execute('''DELETE FROM events WHERE events_name=?''', (event,))
+#        self.conn.commit()
