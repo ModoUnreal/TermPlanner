@@ -11,7 +11,7 @@ class Planner(object):
 
     def open_connection(self):
         """Opens a database connection."""
-        self.conn = sqlite3.connect("planner.db")
+        self.conn = sqlite3.connect(self.db)
         self.connected = True
         self.cur = self.conn.cursor()
 
@@ -39,12 +39,13 @@ class Planner(object):
 
     def create_event(self, date, event):
         """Creates an event inside of a database"""
-        self.open_connection(self.db)
+        if not self.connected:
+            self.open_connection(self.db)
+
         self.event = (event,)
         self.date = (date,)
         self.cur.execute('INSERT INTO events (date, events_name) VALUES (?, ?)', (event, date))
         self.conn.commit()
-        self.close_connection()
         
     def read_all(self):
         """Reads the whole database and prints it out"""
