@@ -42,9 +42,7 @@ class Planner(object):
         if not self.connected:
             self.open_connection(self.db)
 
-        self.event = (event,)
-        self.date = (date,)
-        self.cur.execute('INSERT INTO events (date, events_name) VALUES (?, ?)', (event, date))
+        self.cur.execute('INSERT INTO events (date, events_name) VALUES (?, ?)', (date, event))
         self.conn.commit()
         
     def read_all(self):
@@ -57,6 +55,7 @@ class Planner(object):
 
     def checkout(self, event):
         """User controlled option to remove event from database."""
-        pass
-#        self.cur.execute('''DELETE FROM events WHERE events_name=?''', (event,))
-#        self.conn.commit()
+        if not self.connected:
+            self.open_connection(self.db)
+        self.cur.execute('DELETE FROM events WHERE events_name=(?)', (event,))
+        self.conn.commit()
