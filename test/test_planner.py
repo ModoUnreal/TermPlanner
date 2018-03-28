@@ -29,6 +29,10 @@ class PlannerTestCase(unittest.TestCase):
         """Test whether the planner object can properly read through the db."""
         self.temp_planner.read_all()
 
+    def test_checkout(self):
+        """Test the checkout function."""
+        self.temp_planner.checkout("My birth")
+
 
 if __name__ == '__main__':
     unittest.main()
