@@ -11,13 +11,13 @@ import planner.planner as planner
 class PlannerTestCase(unittest.TestCase):
     def setUp(self):
         """Sets up a temporary planner and database"""
-        self.temp_planner = planner.Planner(db="tempdb.db")
+        self.temp_planner = planner.Planner(db_name="tempdb.db")
         self.temp_planner.make_db()
 
     def tearDown(self):
         """Destroys the database."""
         self.temp_planner.close_connection()
-        os.remove("tempdb.db")
+        os.remove(self.temp_planner.db)
 
     def test_create_event(self):
         """Ensure that create_event function properly inserts event
