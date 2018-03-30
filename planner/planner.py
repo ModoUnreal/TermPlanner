@@ -1,22 +1,35 @@
 # Created by Alex Hurtado
 import sqlite3
 import click
+import os
 
 
 class Planner(object):
     """Defines a Planner class"""
-    def __init__(self, db="planner.db"):
-        self.db = db
+    def __init__(self, db_name='planner.db'):
+        self.db_name = db_name
         self.connected = None
+
+        self.PATH = os.path.dirname(os.path.realpath(__file__))
+        self.db = self.PATH + "\\"+ self.db_name
+
+    def make_db(self):
+        """Makes a database, if it doesn't exist already"""
+
+        self.open_connection()
+        self.cur.execute('''CREATE TABLE events
+                              (date text, events_name text)''')
+        self.conn.commit()
 
     def open_connection(self):
         """Opens a database connection."""
-        self.conn = sqlite3.connect(self.db)
-        self.connected = True
-        self.cur = self.conn.cursor()
+        if not self.connected:
+            self.conn = sqlite3.connect(self.db)
+            self.connected = True
+            self.cur = self.conn.cursor()
 
     def close_connection(self):
-        """Closes the connection to the database"""
+        """Closes the database connection."""
         if self.check_connection():
             self.cur.close()
             self.conn.close()
@@ -30,17 +43,10 @@ class Planner(object):
         else:
             return False
 
-    def make_db(self):
-        """Makes a database, if it doesn't exist already"""
-        self.open_connection()
-        self.cur.execute('''CREATE TABLE events
-                              (date text, events_name text)''')
-        self.conn.commit()
-
     def create_event(self, date, event):
         """Creates an event inside of a database"""
         if not self.connected:
-            self.open_connection(self.db)
+            self.open_connection()
 
         self.cur.execute('INSERT INTO events (date, events_name) VALUES (?, ?)', (date, event))
         self.conn.commit()
