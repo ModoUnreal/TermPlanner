@@ -42,4 +42,5 @@ $ python tests/test_planner.py
 
 ## Contact Information
 You can contact me to discuss the project using my email below:
+
 modounreal@gmail.com
