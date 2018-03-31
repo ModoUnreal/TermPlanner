@@ -53,15 +53,19 @@ class Planner(object):
         
     def read_all(self):
         """Reads the whole database and prints it out"""
-        print("Collecting data from database....")
+        click.echo("Collecting data from database....")
         self.info = self.cur.execute('''SELECT * FROM events''').fetchall()
-        print("Here are the events that you have set: ")
+        click.echo("Here are the events that you have set: ")
         for i in self.info:
-            print(i)
+            click.echo(i)
 
-    def checkout(self, event):
+    def checkout(self, event, allow_list):
         """User controlled option to remove event from database."""
         if not self.connected:
-            self.open_connection(self.db)
+            self.open_connection()
+
         self.cur.execute('DELETE FROM events WHERE events_name=(?)', (event,))
         self.conn.commit()
+
+        if allow_list:
+            self.read_all()

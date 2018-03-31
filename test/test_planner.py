@@ -31,7 +31,7 @@ class PlannerTestCase(unittest.TestCase):
 
     def test_checkout(self):
         """Test the checkout function."""
-        self.temp_planner.checkout("My birth")
+        self.temp_planner.checkout("My birth", False)
 
 
 if __name__ == '__main__':

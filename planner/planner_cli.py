@@ -50,18 +50,18 @@ class PlannerRunner(object):
 
     @cli.command()
     @pass_planner
-    def open(planner):
-        """Opens a connection to the database"""
-        if planner.connected:
-            click.echo("Already connected to the database!!!")
-        else:
-            planner.open_connection()
-
-    @cli.command()
-    @pass_planner
     def list(planner):
         """Lists all of the events in a planner"""
         if not planner.connected:
             planner.open_connection()
         planner.read_all()
         click.echo("List finished!")
+
+    @cli.command()
+    @click.argument("event", default="Alex Hurtado's birthday")
+    @click.option("--allow_list/--disallow_list", default=False)
+    @pass_planner
+    def checkout(planner, event, allow_list):
+        """Remove event from database before it's deadline
+           , if a deadline is given."""
+        planner.checkout(event, allow_list)
