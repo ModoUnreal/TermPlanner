@@ -54,10 +54,14 @@ class Planner(object):
     def read_all(self):
         """Reads the whole database and prints it out"""
         click.echo("Collecting data from database....")
-        self.info = self.cur.execute('''SELECT * FROM events''').fetchall()
-        click.echo("Here are the events that you have set: ")
-        for i in self.info:
-            click.echo(i)
+        try:
+            self.info = self.cur.execute('''SELECT * FROM events''').fetchall()
+            click.echo("Here are the events that you have set: ")
+            for i in self.info:
+                click.echo(i)
+
+        except sqlite3.OperationalError:
+            click.echo("Table events does not exist. First use planner init to initialise the database.")
 
     def checkout(self, event, allow_list):
         """User controlled option to remove event from database."""

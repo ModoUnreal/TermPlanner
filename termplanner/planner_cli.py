@@ -55,7 +55,6 @@ class PlannerRunner(object):
         if not planner.connected:
             planner.open_connection()
         planner.read_all()
-        click.echo("List finished!")
 
     @cli.command()
     @click.argument("event", default="Alex Hurtado's birthday")
