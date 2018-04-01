@@ -1,10 +1,10 @@
-# Planner
+# TermPlanner
 A easy-to-use command line program to organise your day.
 
 ## Installation
 
 ### PyPi package
-Planner is available on PyPi and can be installed with pip:
+TermPlanner is available on PyPi and can be installed with pip:
 
 ```bash
 $ pip install termplanner
@@ -16,10 +16,10 @@ $ pip install git+https://github.com/ModoUnreal/planner.git
 ```
 
 ## Developer Installation
-If you are interested in contributing to 'planner', run the following commands:
+If you are interested in contributing to 'TermPlanner', run the following commands:
 
 ```bash
-$ git clone https://github.com/ModoUnreal/planner.git
+$ git clone https://github.com/ModoUnreal/TermPlanner.git
 
 $ pip install -e
 

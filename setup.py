@@ -12,7 +12,7 @@ setup(name='termplanner',
           planner=termplanner.main:cli
       ''', # This is actually referring to a cli() function...
       description='A simple command line application to plan your day.',
-      url='http://github.com/ModoUnreal/Planner',
+      url='http://github.com/ModoUnreal/TermPlanner',
       author='Alex Hurtado',
       author_email='modounreal@gmail.com',
       license='MIT',
