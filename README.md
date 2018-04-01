@@ -7,7 +7,7 @@ A easy-to-use command line program to organise your day.
 Planner is available on PyPi and can be installed with pip:
 
 ```bash
-$ pip install planner
+$ pip install termplanner
 ```
 
 You can also install the latest version of 'planner' from Github:
