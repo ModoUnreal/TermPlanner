@@ -1,7 +1,7 @@
 # TermPlanner
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Build Status](https://travis-ci.org/ModoUnreal/TermPlanner.svg?branch=master)](https://travis-ci.org/ModoUnreal/TermPlanner)
-[![Latest Version](https://pypip.in/version/<termplanner>/badge.svg)](https://pypi.python.org/pypi/<termplanner>/)
+[![Latest Version](https://pypip.in/version/<termplanner>/badge.svg)](https://pypi.python.org/pypi/termplanner/)
 
 An easy-to-use command line program to organise your day.
 
