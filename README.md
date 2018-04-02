@@ -1,5 +1,7 @@
 # TermPlanner
-A easy-to-use command line program to organise your day.
+[![Build Status](https://travis-ci.org/ModoUnreal/TermPlanner.svg?branch=master)](https://travis-ci.org/ModoUnreal/TermPlanner)
+
+An easy-to-use command line program to organise your day.
 
 ## Installation
 
