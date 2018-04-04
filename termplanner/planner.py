@@ -2,6 +2,7 @@
 import sqlite3
 import click
 import os
+import datetime
 
 
 class Planner(object):
@@ -73,3 +74,17 @@ class Planner(object):
 
         if allow_list:
             self.read_all()
+
+    def read_all_proto(self):
+        """Lists out events in order of importance"""
+        pass
+
+
+    def get_dates(self): # Experimental, not tested yet...
+        """Fetches all the dates present in the database"""
+        self.info = self.cur.execute('''SELECT * FROM events''')
+        self.date_list = []
+        for i in self.info:
+            self.date_list.append(i[0])
+
+        return self.date_list
