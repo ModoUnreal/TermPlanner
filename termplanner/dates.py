@@ -6,14 +6,21 @@ import datetime
 def find_years(date):
     """Used to find the year within the string."""
     date_length = len(date)
-    if date[date_length - 4:].find('.') != 0:
+    if date[date_length - 4:].find('.') == -1:
         year = date[date_length - 4:]
 
     else:
-        year = date[:date_length - 4]
+        year = date[:date_length - 6]
 
     return year
 
-def find_months(date):
-    """Used to find the month in a date string."""
-    pass
+def find_days(date):
+    """Used to find the days in a date string."""
+    date_length = len(date)
+    if date[date_length - 3:].find('.') != 0:
+        day = date[:date_length - 8]
+
+    elif date[:date_length - 7].find('.') != 0:
+        day = date[date_length - 2:]
+
+    return day
