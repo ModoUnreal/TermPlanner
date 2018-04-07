@@ -1,9 +1,41 @@
 # TermPlanner
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Build Status](https://travis-ci.org/ModoUnreal/TermPlanner.svg?branch=master)](https://travis-ci.org/ModoUnreal/TermPlanner)
-[![Latest Version](https://pypip.in/version/<termplanner>/badge.svg)](https://pypi.python.org/pypi/termplanner/)
+[![Latest Version](https://pypip.in/version/termplanner/badge.svg)](https://pypi.python.org/pypi/termplanner/)
 
-An easy-to-use command line program to organise your day.
+Command line application to increase your productivity!
+
+## Usage
+### Initialise a database
+To begin using `termplanner` you must initialise a database.
+```bash
+$ planner init
+```
+
+You only need to initialise the database once. After that you can just reuse it, as the file will already be made.
+
+### Add an event to the database
+You can then add an event to the database like so:
+```bash
+$ planner add [date][event]
+$ planner add "05.06.2018" "Exam day!!!!"
+```
+The date and event arguments must be added in as strings.
+
+### Manually delete an event from the database
+To delete an event from the database input the following:
+```bash
+$ planner checkout [event]
+```
+You can also add the following options when using `checkout`.
+* `--allow_list` prints out a list of remaining events after an event is deleted.
+* `--disallow_list` is the default.
+
+### Display a list of events in the database
+To show what events are inside the database do this:
+```bash
+$ planner list
+```
 
 ## Installation
 

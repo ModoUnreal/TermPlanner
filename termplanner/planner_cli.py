@@ -32,9 +32,8 @@ class PlannerRunner(object):
     @cli.command()
     @click.argument("date", default="5.7.2000")
     @click.argument("event", default="Alex Hurtado's birthday")
-    @click.argument("database", default="planner.db")
     @pass_planner
-    def add(planner, date, event, database):
+    def add(planner, date, event):
         """Adds an event onto the planner."""
         planner.create_event(date, event)
         click.echo("This is done!!!")
