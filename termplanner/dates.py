@@ -30,3 +30,14 @@ def find_days(date):
         day = date[date_length - 2:]
 
     return day
+
+def find_months(date):
+    """Used to find the years in a date string."""
+    date_length = len(date)
+    if date_length == 8:
+        month = "0" + date[date_length - 6:3]
+
+    elif date_length == 10:
+        month = date[date_length - 6:-4]
+
+    return month
